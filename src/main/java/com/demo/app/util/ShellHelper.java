@@ -44,4 +44,32 @@ public class ShellHelper {
     public String getErrorMessage(String message) {
         return getColored(message, PromptColor.valueOf(errorColor));
     }
+
+    public void print(String msg, PromptColor color) {
+        if (color != null) {
+            msg = getColored(msg, color);
+        }
+        terminal.writer().println(msg);
+        terminal.flush();
+    }
+
+    public void printDefault(String message) {
+        print(message, null);
+    }
+
+    public void printSuccess(String message) {
+        print(message, PromptColor.valueOf(successColor));
+    }
+
+    public void printInfo(String message) {
+        print(message, PromptColor.valueOf(infoColor));
+    }
+
+    public void printWarning(String message) {
+        print(message, PromptColor.valueOf(warningColor));
+    }
+    public void printError(String message) {
+        print(message, PromptColor.valueOf(errorColor));
+    }
+
 }
